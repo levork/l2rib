@@ -1,0 +1,5 @@
+Bound -1 1 0 0 -1 1
+AttributeBegin
+Rotate 90 1 0 0
+Disk 0 1 270
+AttributeEnd

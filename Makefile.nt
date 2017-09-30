@@ -1,0 +1,23 @@
+DEBUG = /Zi
+OPT = /Ox
+WARN = /W1
+CFLAGS = /MT /nologo $(DEBUG) $(WARN) /I"C:\Program Files\Microsoft Platform SDK\Include"
+CCFLAGS = $(CFLAGS) /TP /GX 
+LIBFLAGS = /nologo /subsystem:console -LIBPATH:"C:\Program Files\Microsoft Platform SDK\Lib"
+RM = rm
+
+all:	l2rib line.mll
+
+l2rib: 	l2rib.obj
+	link $(LIBFLAGS) /out:l2rib.exe l2rib.obj ShFolder.lib
+
+l2rib.obj: l2rib.C
+	cl $(CCFLAGS) /Fol2rib.obj /c l2rib.C
+
+line.mll: line.c
+	cl $(CFLAGS) -I"$(RMANTREE)\include" -c line.c
+	link /nologo /out:line.mll /dll -LIBPATH:"$(RMANTREE)\lib" line.obj Prman.lib
+
+clean:	
+	-$(RM) l2rib.exe l2rib.obj line.mll
+

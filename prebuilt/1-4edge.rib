@@ -1,0 +1,10 @@
+Bound 0 1.25 0 0 0 1.25
+IfBegin "$user:l2ribLines == 1"
+AttributeBegin
+Surface "edgeConstant"
+Attribute "visibility" "int trace" [0] "string transmission" ["transparent"]
+Procedural "DynamicLoad" 
+["line.rll" "1 3 1 0 0  1 0 0.5522846  0.5522846 0 1 0 0 1" ]
+[ 0 1.25 0 0 0 1.25 ]
+AttributeEnd
+IfEnd

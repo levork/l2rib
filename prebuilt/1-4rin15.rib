@@ -1,0 +1,6 @@
+Bound 0 16 0 0 0 16
+AttributeBegin
+Rotate 90 1 0 0
+Rotate 180 0 0 1
+Hyperboloid -16 0 0 -15 0 0 90
+AttributeEnd

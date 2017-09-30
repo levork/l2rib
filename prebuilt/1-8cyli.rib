@@ -1,0 +1,5 @@
+Bound 0.7071 1 0 1 0 0.7071
+AttributeBegin
+Rotate 90 1 0 0
+Cylinder 1 0 -1 45
+AttributeEnd

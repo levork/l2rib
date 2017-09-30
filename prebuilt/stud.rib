@@ -1,0 +1,35 @@
+Bound -6 6 -4 0 -6 6
+AttributeBegin
+Attribute "identifier" "name" ["4-4edge.dat"]
+ConcatTransform [ 6 0 0 0 0 1 0 0 0 0 6 0 0 0 0 1]
+Procedural "DelayedReadArchive" ["4-4edge.rib"] [-1 1 0 0 -1 1]
+AttributeEnd
+AttributeBegin
+Attribute "identifier" "name" ["4-4edge.dat"]
+ConcatTransform [ 6 0 0 0 0 1 0 0 0 0 6 0 0 -4 0 1]
+Procedural "DelayedReadArchive" ["4-4edge.rib"] [-1 1 0 0 -1 1]
+AttributeEnd
+AttributeBegin
+Attribute "identifier" "name" ["4-4cyli.dat"]
+ConcatTransform [ 6 0 0 0 0 -4 0 0 0 0 6 0 0 0 0 1]
+Procedural "DelayedReadArchive" ["4-4cyli.rib"] [-1 1 0 1 -1 1]
+AttributeEnd
+AttributeBegin
+Attribute "identifier" "name" ["4-4disc.dat"]
+IfBegin "$user:l2ribStudLogo == 1"
+Displacement "basicDisp" "float Kd" [0.2]
+Attribute "displacementbound" "coordinatesystem" ["object"] "sphere" [0.2]
+TextureCoordinates 0 1 1 1 0 0 1 0
+IfEnd
+ConcatTransform [ 6 0 0 0 0 0.001 0 0 0 0 6 0 0 -4 0 1]
+TrimCurve [4] [4 4 4 4] [0 0 0 0 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 6 6 6
+6 6 6 6 6 8 8 8 8] [0 2 4 6] [2 4 6 8] [4 4 4 4] [1 1 0.776142 0.5 0.5
+0.223858 0 0 0 0 0.223858 0.5 0.5 0.776142 1 1] [0.5 0.223858 0 0 0 0
+0.223858 0.5 0.5 0.776142 1 1 1 1 0.776142 0.5] [1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1]
+NuPatch 4 4 [0 0 0 0 1 1 1 1] 0 1 4 4 [0 0 0 0 1 1 1 1] 0 1 "Pw" [-1 0
+1 1 -1 0 0.333333 1 -1 0 -0.333333 1 -1 0 -1 1 -0.333333 0 1 1
+-0.333333 0 0.333333 1 -0.333333 0 -0.333333 1 -0.333333 0 -1 1
+0.333333 0 1 1 0.333333 0 0.333333 1 0.333333 0 -0.333333 1 0.333333 0
+-1 1 1 0 1 1 1 0 0.333333 1 1 0 -0.333333 1 1 0 -1 1]
+AttributeEnd

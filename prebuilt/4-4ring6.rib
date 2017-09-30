@@ -1,0 +1,5 @@
+Bound -7 7 0 0 -7 7
+AttributeBegin
+Rotate 90 1 0 0
+Hyperboloid -7 0 0 -6 0 0 360
+AttributeEnd

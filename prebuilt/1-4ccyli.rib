@@ -1,0 +1,5 @@
+Bound 0 3.5 -1 1 0 3.5
+AttributeBegin
+Rotate 90 1 0 0
+Torus 2.5 1 0 360 90
+AttributeEnd
