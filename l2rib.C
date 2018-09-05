@@ -107,6 +107,9 @@ template<> struct hash<std::string>
 #define PATHSEP "/"
 #endif
 
+#define REMOVE_SPACES(x) x.erase(std::remove(x.begin(), x.end(), ' '), x.end())
+#define REMOVE_CRS(x) x.erase(std::remove(x.begin(), x.end(), '\r'), x.end())
+
 using namespace std;
 
 struct ColourCode {
@@ -377,10 +380,15 @@ bool isFloatString(const string& s) {
 string fixFileName(const string& s)
 {
     string retval(s);
+    REMOVE_SPACES(retval);
+    REMOVE_CRS(retval);
+    
     for (string::iterator i = retval.begin(); i != retval.end(); i++) {
 	if (*i == '\\')
 	    *i = '/';
-	else
+        else if (*i == ' ')
+            *i = '_';
+        else
 	    *i = tolower(*i);
     }
     return retval;
@@ -869,7 +877,7 @@ void mpdScan(ifstream &in) {
 		    doMPD = true;
 		} else {
 		    // Add the file name to the list
-		    string filename = fixFileName(tokenize(line));
+		    string filename = fixFileName(line);
 		    mpdNames.insert(filename);
 		}
 	    }
@@ -900,8 +908,8 @@ string mpdGetNextFileName(ifstream &in) {
 	if (!token.empty() && isNumericString(token) && atoi(token.c_str()) == 0) {
 	    token = tokenize(line);
 	    if (token == "FILE") {
-		string filename = fixFileName(tokenize(line));
-		filename.replace(filename.length() - 3, 3, "rib");
+		string filename = fixFileName(line);
+		filename.replace(filename.length() -3, 3, "rib");
 		return filename;
 	    }
 	}
@@ -1002,7 +1010,9 @@ bool parseFile(ostream &out, ifstream &in, const string& partname, Bound& bound)
 		    matrix[15] = 1;
 
 		    istringstream lineStream(line.c_str());
-		    lineStream >> colour >> matrix[12] >> matrix[13] >> matrix[14] >> matrix[0] >> matrix[4] >> matrix[8] >> matrix[1] >> matrix[5] >> matrix[9] >> matrix[2] >> matrix[6] >> matrix[10] >> partname;
+		    lineStream >> colour >> matrix[12] >> matrix[13] >> matrix[14] >> matrix[0] >> matrix[4] >> matrix[8] >> matrix[1] >> matrix[5] >> matrix[9] >> matrix[2] >> matrix[6] >> matrix[10];
+                    getline(lineStream, partname);
+                    REMOVE_SPACES(partname);
 
 		    // Zero scales aren't handled very well,
 		    // particularly during ray tracing. So we need to

@@ -35,6 +35,12 @@ FEATURES
   quality settings
 - automatically writes out RIB for rendering depth map shadows
 
+BUILDING
+--------
+
+MacOS example:
+
+env RMANTREE=/Applications/Pixar/RenderManProServer-21.7 make -f Makefile.unix
 
 INSTALL
 -------

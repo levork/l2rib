@@ -2,16 +2,16 @@ CPP = g++
 CC = gcc
 CFLAGS = -Wall -g
 DSOFLAGS = -shared
-RM = rm
+RM = rm -rf
 RMAN = $${RMANTREE:-/usr/local/prman}
 
 all:	l2rib line.rll
 
 l2rib: 	l2rib.C
-	$(CPP) $(CFLAGS) -o l2rib l2rib.C
+	$(CPP) $(CFLAGS) -g -o l2rib l2rib.C
 
 line.rll: line.c
-	$(CC) $(DSOFLAGS) -o line.rll -I$(RMAN)/include line.c
+	$(CC) $(DSOFLAGS) -g -o line.rll -I$(RMAN)/include line.c -L$(RMAN)/lib -lprman
 
 clean:	
-	-$(RM) l2rib line.so
+	$(RM) l2rib $(wildcard *.dSYM) $(wildcard *.so) $(wildcard *.rll)
