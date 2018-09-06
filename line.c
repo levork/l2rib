@@ -37,6 +37,7 @@
 
 #define LINEWIDTH 0.001
 
+#include <math.h>
 #include <ri.h>
 #include <stdio.h>
 #include <string.h>
